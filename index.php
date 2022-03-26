@@ -33,7 +33,7 @@ if (isset($_SESSION['use'])) {
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-md-10">
                     <!-- Heading -->
-                    <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Web Career Portal</h2>
+                    <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Awesome Web Career Portal</h2>
                     <!-- Divider -->
                     <hr class="hr-light">
                     <!-- Description -->
