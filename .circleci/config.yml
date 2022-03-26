@@ -10,7 +10,7 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: sudo npm install -g npm@latest
-      - run: npm run test
+      - run: node deploy.js
 workflows:
   test_my_app:
     jobs:
