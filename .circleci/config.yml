@@ -1,12 +1,9 @@
-version: 2.0
+version: 2.1
+
 jobs:
   build:
     machine:
       image: circleci/classic:latest
-    branches:
-          only:
-            - master
-
     steps:
       - run:
           name: Install LFTP
@@ -17,3 +14,11 @@ jobs:
       - run:
           name: Send Via SFTP
           command: lftp sftp://USERNAME:PASSWORD@sftp.pressable.com -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ./wp-content/themes/; quit"
+
+workflows:
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: "master"
