@@ -6,6 +6,7 @@ jobs:
     branches:
           only:
             - main
+            
     steps:
       - run:
           name: Install LFTP
