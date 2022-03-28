@@ -58,7 +58,7 @@ jobs:
       # - run: ./vendor/bin/codecept build
       # - run: ./vendor/bin/codecept run
 
-  build:
+  transfer:
     machine:
       image: circleci/classic:latest
     steps:
@@ -75,7 +75,8 @@ jobs:
 workflows:
   deploy-apnas01:
     jobs:
-      - build:
+      - build-php
+      - transfer:
           filters:
             tags:
               only: master
