@@ -75,8 +75,13 @@ jobs:
 workflows:
   deploy-apnas01:
     jobs:
-      - build-php
+      - build-php:
+          filters:
+            tags:
+              only: master
       - transfer:
+          requires:
+            - build-php
           filters:
             tags:
               only: master
