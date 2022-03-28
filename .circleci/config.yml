@@ -19,7 +19,7 @@ jobs:
 
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    working_directory: /tmp
+    working_directory: /test
     steps:
       - checkout
 
@@ -69,12 +69,12 @@ jobs:
   transfer:
     machine:
       image: circleci/classic:latest
-    working_directory: /tmp
+    working_directory: /test
       
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
-          at: /tmp/workspace
+          at: /test/workspace
       - run:
           name: Install LFTP
           command: |
