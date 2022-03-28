@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: Send Via SFTP
-          command: lftp sftp://$SFTP_USER:$SFTP_PASSWORD@SFTP_HOST -e "mirror -v -R --exclude .git/ --exclude .circleci/ --exclude ./db_admin --exclude ./ ./; quit"
+          command: lftp sftp://$SFTP_USER:$SFTP_PASSWORD@$SFTP_HOST -e "mirror -v -R --exclude .git/ --exclude .circleci/ --exclude ./db_admin --exclude ./ ./; quit"
 
 workflows:
   test:
