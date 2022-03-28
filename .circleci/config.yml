@@ -19,6 +19,7 @@ jobs:
 
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    working_directory: /tmp
     steps:
       - checkout
 
@@ -57,11 +58,23 @@ jobs:
       #- run: ./vendor/bin/phpunit
       # - run: ./vendor/bin/codecept build
       # - run: ./vendor/bin/codecept run
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: workspace
+          # Must be relative path from root
+          paths:
+            - echo-output
 
   transfer:
     machine:
       image: circleci/classic:latest
+    working_directory: /tmp
+      
     steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/workspace
       - run:
           name: Install LFTP
           command: |
