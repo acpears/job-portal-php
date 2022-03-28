@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: Send Via SFTP
-          command: lftp sftp://USERNAME:PASSWORD@sftp.pressable.com -e "mirror -v -R --exclude .git/ --exclude .circleci/ ./ ./wp-content/themes/; quit"
+          command: lftp sftp://$SFTP_USER:$SFTP_PASSWORD@SFTP_HSOT -e "mirror -v -R --exclude .git/ --exclude .circleci/ --exclude ./db_admin --exclude ./ ./; quit"
 
 workflows:
   test:
